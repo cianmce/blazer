@@ -12,9 +12,6 @@ module Blazer
     BLAZER_IMAGE_EXT = %w[png jpg jpeg gif]
 
     def blazer_format_value(key, value)
-      puts "value: #{value} - #{value.encoding.to_s}" if value.respond_to?(:force_encoding)
-      # value = value.force_encoding(Encoding::UTF_8) if value.respond_to?(:force_encoding)
-
       if value.is_a?(Numeric) && !key.to_s.end_with?("id") && !key.to_s.start_with?("id")
         number_with_delimiter(value)
       elsif value.is_a?(String) && value =~ BLAZER_URL_REGEX
