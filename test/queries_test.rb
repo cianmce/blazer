@@ -12,7 +12,7 @@ class QueriesTest < ActionDispatch::IntegrationTest
   end
 
   def test_create
-    post blazer.queries_path, params: {query: {name: "Test", statement: 'select unhex("F6"), 123', data_source: "main"}}
+    post blazer.queries_path, params: {query: {name: "Test", statement: "SELECT 1", data_source: "main"}}
     assert_response :redirect
 
     query = Blazer::Query.last
@@ -31,6 +31,12 @@ class QueriesTest < ActionDispatch::IntegrationTest
     query = create_query
     delete blazer.query_path(query)
     assert_response :redirect
+  end
+
+  def test_binary_data
+    puts "test_binary_data"
+    run_query 'select unhex("F6"), 123'
+    puts "test_binary_data end"
   end
 
   def test_rollback
