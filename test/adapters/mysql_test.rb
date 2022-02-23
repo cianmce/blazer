@@ -9,6 +9,7 @@ class MysqlTest < ActionDispatch::IntegrationTest
     puts "mysql_test_binary_data"
     run_query 'select unhex("F6"), 123', data_source: "mysql"
     puts "mysql_test_binary_data end"
+    puts response.body
   end
 
   def test_tables
