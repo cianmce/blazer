@@ -2,7 +2,9 @@ require_relative "test_helper"
 
 class MysqlTest < ActionDispatch::IntegrationTest
   def test_run
-    run_query "SELECT 1", data_source: "mysql"
+    puts "mysql_test_normal_data"
+    run_query "SELECT 123", data_source: "mysql"
+    puts "mysql_test_normal_data end"
   end
 
   def test_binary_data
