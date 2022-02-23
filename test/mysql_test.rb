@@ -9,11 +9,11 @@ class MysqlTest < ActionDispatch::IntegrationTest
     puts "mysql_test_normal_data end"
   end
 
-  # def test_binary_data
-    # puts "mysql_test_binary_data"
-    # run_query 'select unhex("F6"), 123', data_source: "mysql"
-    # puts "mysql_test_binary_data end"
-  # end
+  def test_binary_data
+    puts "mysql_test_binary_data"
+    run_query 'select unhex("F6"), 123', data_source: "mysql"
+    puts "mysql_test_binary_data end"
+  end
 
   def test_tables
     get blazer.tables_queries_path(data_source: "mysql")
