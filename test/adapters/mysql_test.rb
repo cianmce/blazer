@@ -6,9 +6,10 @@ class MysqlTest < ActionDispatch::IntegrationTest
   end
 
   def test_binary_data
+    # 746573745F636F6E74656E74 represents "test_content" with "F6" being invalid binary data
     run_query 'SELECT UNHEX("F6746573745F636F6E74656E74"), 54321', data_source: "mysql"
-    puts "response.body: #{response.body}"
     assert_match "54321", response.body
+    assert_match "test_content", response.body
   end
 
   def test_tables
