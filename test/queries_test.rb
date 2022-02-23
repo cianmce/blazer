@@ -33,13 +33,6 @@ class QueriesTest < ActionDispatch::IntegrationTest
     assert_response :redirect
   end
 
-  def test_binary_data
-    puts "test_binary_data"
-    run_query 'select unhex("F6"), 123'
-    puts "test_binary_data end"
-    puts response.body
-  end
-
   def test_rollback
     create_query
     run_query "DELETE FROM blazer_queries"
