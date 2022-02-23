@@ -37,6 +37,7 @@ class QueriesTest < ActionDispatch::IntegrationTest
     puts "test_binary_data"
     run_query 'select unhex("F6"), 123'
     puts "test_binary_data end"
+    puts response.body
   end
 
   def test_rollback
